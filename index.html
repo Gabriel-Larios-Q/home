@@ -1,2 +1,102 @@
-<div>Hello</div>
-<p>world</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web Page Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #333; color: #fff; padding: 1rem; }
+    header h1 { margin: 0; }
+    nav#toc { background: #f4f4f4; padding: 1rem; }
+    nav#toc ul { list-style: none; padding: 0; }
+    nav#toc a { text-decoration: none; color: #333; }
+    .tabs { display: flex; background: #ddd; }
+    .tabs button { flex: 1; padding: 1rem; border: none; background: #ccc; cursor: pointer; }
+    .tabs button.active { background: #fff; border-bottom: 2px solid #333; }
+    .tab-content { display: none; padding: 1rem; }
+    .tab-content.active { display: block; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    table, th, td { border: 1px solid #999; }
+    th, td { padding: 0.5rem; text-align: center; }
+    img { max-width: 100%; height: auto; display: block; margin: 1rem auto; }
+    .caption { text-align: center; font-size: 0.9rem; color: #555; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Interactive Web Page Example</h1>
+  </header>
+  <nav id="toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#intro-tab">1. Introduction</a></li>
+      <li><a href="#tables-tab">2. Data Tables</a></li>
+      <li><a href="#image-tab">3. Example Image</a></li>
+    </ul>
+  </nav>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="intro-tab">Introduction</button>
+    <button class="tab-btn" data-tab="tables-tab">Data Tables</button>
+    <button class="tab-btn" data-tab="image-tab">Image</button>
+  </div>
+  <section id="intro-tab" class="tab-content active">
+    <h2>Introduction</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nullam ac erat quis nulla tempus fermentum. Integer non mauris malesuada, gravida risus vitae, consequat purus.</p>
+    <p>Quisque sit amet eros at elit ullamcorper posuere. Donec vehicula dolor nec nisl fermentum, at vehicula elit commodo. Sed vitae arcu non odio convallis ullamcorper.</p>
+  </section>
+
+  <section id="tables-tab" class="tab-content">
+    <h2>Data Tables</h2>
+    <h3>Population by Year</h3>
+    <table>
+      <thead>
+        <tr><th>Year</th><th>Population (millions)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2018</td><td>7.63</td></tr>
+        <tr><td>2019</td><td>7.71</td></tr>
+        <tr><td>2020</td><td>7.79</td></tr>
+        <tr><td>2021</td><td>7.88</td></tr>
+        <tr><td>2022</td><td>7.96</td></tr>
+      </tbody>
+    </table>
+    <h3>Monthly Sales</h3>
+    <table>
+      <thead>
+        <tr><th>Month</th><th>Sales ($)</th><th>Growth (%)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>January</td><td>10,000</td><td>5</td></tr>
+        <tr><td>February</td><td>12,500</td><td>25</td></tr>
+        <tr><td>March</td><td>9,800</td><td>-21.6</td></tr>
+        <tr><td>April</td><td>14,200</td><td>44.9</td></tr>
+        <tr><td>May</td><td>13,300</td><td>-6.3</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="image-tab" class="tab-content">
+    <h2>Example Image</h2>
+    <p>Below is an example image extracted from the web:</p>
+    <img src="https://via.placeholder.com/600x400" alt="Example Placeholder Image">
+    <p class="caption">Figure 1: Placeholder image from via.placeholder.com</p>
+  </section>
+
+  <script>
+    // Tab switching logic
+    const buttons = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // deactivate all buttons and contents
+        buttons.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        // activate the clicked one
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
